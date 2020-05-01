@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TestAService } from './testa.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ch08';
+
+  constructor(private aService: TestAService) {
+    this.aService.setTitle('父组件');
+    this.title = this.aService.getTitle();
+  }
+
+  refresh() {
+    this.title = this.aService.getTitle();
+  }
 }
